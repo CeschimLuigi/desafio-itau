@@ -3,10 +3,7 @@ package br.com.luigiceschim.desafioitau.transacao;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -32,7 +29,23 @@ public record TransacaoController(TransacaoRepository transacaoRepository) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
+
+
+
+
  }
+
+    @DeleteMapping
+    public ResponseEntity limpar(){
+        System.out.println("Limpando transacoes...");
+
+        transacaoRepository.remove();
+
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+
+
 
     private void validacaoTransacao(TransacaoRequest transacaoRequest) {
         if (transacaoRequest.valor().compareTo(BigDecimal.ZERO) < 0 ){

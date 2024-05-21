@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public class TransacaoRepository {
 
-    private List<TransacaoRequest> transacoes = new ArrayList<>();
+    private  List<TransacaoRequest> transacoes = new ArrayList<>();
 
 
     public void add(TransacaoRequest transacaoRequest){
